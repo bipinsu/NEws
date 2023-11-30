@@ -194,44 +194,6 @@ nav {
 }
 
 
-@media only screen and (min-width: 600px) {
-    .header {
-        flex-direction: row; /* Change back to row */
-        justify-content: space-between; /* Add space between items */
-        align-items: center;
-        padding: 10px 20px; /* Adjust padding for larger screens */
-    }
-
-    .header .links {
-        flex-direction: row; /* Change back to row */
-    }
-
-    .header .links li {
-        margin-bottom: 0; /* Remove margin for spacing */
-        margin-right: 20px; /* Add margin for spacing between links */
-    }
-
-    .icon i {
-        margin-bottom: 0; /* Remove margin for spacing */
-    }
-
-    .searchBox {
-        max-width: 500px;
-        margin-bottom: 10px; /* Adjust max-width for larger screens */
-    }
-
-    .navigation {
-        padding: 20px; /* Adjust padding for larger screens */
-    }
-
-    .logo a {
-        font-size: 24px; /* Change font size for larger screens */
-    }
-
-    .links a {
-        font-size: 16px; /* Change font size for larger screens */
-    }
-}
 
 
 
