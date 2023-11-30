@@ -1,0 +1,925 @@
+/* Dashboard */
+.content .title{
+    display: flex;
+    align-items: center;
+    margin: 60px 0 30px 0;
+} 
+.content .title i{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    color: var(--title-icon-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.content .title .text{
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+/* dummy */
+.content .boxes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.content .boxes .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    width: calc(100% / 3 - 15px);
+    padding: 15px 20px;
+    background-color: var(--box1-color);
+}
+.boxes .box i{
+    font-size: 35px;
+    color: var(--text-color);
+}
+.boxes .box .text{
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box .number{
+   
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box.box2{
+    background-color: var(--box2-color);
+}
+.boxes .box.box3{
+    background-color: var(--box3-color);
+}
+.content .activity .activity-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.activity .activity-data{
+    display: flex;
+}
+.activity-data .data{
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+}
+.activity-data .data-title{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+
+}
+.activity-data .data .data-list{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    white-space: nowrap;
+    color: var(--text-color);
+}
+/* ############################## Table ####################################*/
+/* table{
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    color:var(--text-color);
+    table-layout: fixed;
+   
+   
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    width: auto;
+}
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+th {
+    background-color: var(--primary-color);
+    font-weight: bold;
+    color: #fff;
+}
+
+tr {
+    background-color: var(--panel-color);
+}
+td:first-child {
+    width: 35px;
+}
+th:first-child {
+    width: 35px;
+}
+.all-button{
+   
+}
+table .button-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  justify-content: center;
+}
+
+table .button-group a {
+    text-decoration: none;
+}
+
+table .button-group button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+table .button-group button i{
+    margin-right: 5px;
+}
+
+table .button-group .view{
+    padding: 4px 8px 4px 8px;
+    color: #fff;
+    background-color: var(--view-button-color);
+    border:none;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+table .button-group .view:hover{
+    background-color:var(--view-hover-button-color);
+}
+table .button-group .delete{
+    padding: 4px 8px 4px 8px;
+    color: #fff;
+    background-color: var(--delete-button-color);
+    border:none;
+    border-radius: 10px;
+    margin-left: 10px;
+
+}
+table .button-group .delete:hover{
+    background-color:var(--delete-hover-button-color);
+}
+table .button-group .edit{
+    padding: 4px 8px 4px 8px;
+    color: #fff;
+    background-color: var(--edit-button-color);
+    border:none;
+    border-radius: 10px;
+    margin-left: 10px;
+
+}
+table .button-group .edit:hover{
+    background-color:var(--edit-hover-button-color);
+} */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color);
+    font-weight: bold;
+    color: #fff;
+}
+
+/* tr:nth-child(even) {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: red;
+} */
+
+td:first-child {
+    width: 35px;
+}
+
+th:first-child {
+    width: 35px;
+}
+
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+thead th {
+    text-align: center;
+}
+
+td input[type="checkbox"], th input[type="checkbox"] {
+    margin: 0;
+}
+.all-button {
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-group a {
+    text-decoration: none;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.button-group button i {
+    margin-right: 5px;
+}
+
+.view {
+    background-color: var(--view-button-color);
+    color: #fff;
+}
+
+.view:hover {
+    background-color: var(--view-hover-button-color);
+}
+
+.delete {
+    background-color: var(--delete-button-color);
+    color: #fff;
+}
+
+.delete:hover {
+    background-color: var(--delete-hover-button-color);
+}
+
+.edit {
+    background-color: var(--edit-button-color);
+    color: #fff;
+}
+
+.edit:hover {
+    background-color: var(--edit-hover-button-color);
+}
+
+/* ################################################ User CRUD ################################################# */
+
+.create-user{
+   padding:10px 20px 10px 20px;
+    color: #fff;
+    background-color: var(--create-button-color);
+    border:none;
+    border-radius: 10px;
+}
+.create-user:hover{
+    background-color:var(--create-hover-button-color); 
+}
+.all-role-table{
+    overflow-x: scroll;
+}
+.all-user-table{
+    overflow-x: scroll;
+}
+
+
+
+
+ /* create role page */
+ .create-user-form {
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+  
+  .create-user-form label {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+  
+  .create-user-form .forms-input {
+    margin-bottom: 20px;
+  }
+  
+  .create-user-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .create-user-form .create-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--create-button-color);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: var(--tran-03);
+  }
+  
+  .create-user-form .create-btn:hover {
+    background-color: var(--create-hover-button-color);
+  }
+  .password-field {
+    position: relative;
+}
+
+.password {
+    padding-right: 40px; 
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 10;
+}
+#role {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    transition: var(--tran-03);
+    line-height: 2;
+}
+
+#role option {
+    padding: 10px 0;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+.role-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.role-container .roles {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Selected Options Container */
+#selectedRolesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    background-color: #fff;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.selected-role {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selected-role .remove-role {
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+
+/*############################ Permision CRUD ########################################### */
+.create-permission{
+    padding:10px 20px 10px 20px;
+     color:#fff;
+     background-color: var(--create-button-color);
+     border:none;
+     border-radius: 10px;
+ }
+ .permission-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.permission-container .permission {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 1px 2px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 7px;
+    color: #fff;
+    font-weight:600; 
+}
+/* inport export btn */
+.import, .export {
+    display: inline-block;
+    margin-top: 5px;
+    margin-right: 10px; /* Add margin for spacing between buttons */
+}
+
+.import-permission, .export-permission {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color, change it as needed */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: var(--tran-03);
+}
+.option{
+    text-transform: capitalize;
+}
+.import-permission:hover, .export-permission:hover {
+    background-color: #0056b3; /* Darker blue on hover, adjust as needed */
+}
+.import-user, .export-user {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color, change it as needed */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: var(--tran-03);
+}
+
+.import-user:hover, .export-user:hover {
+    background-color: #0056b3; /* Darker blue on hover, adjust as needed */
+}
+.import-role, .export-role {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color, change it as needed */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: var(--tran-03);
+}
+
+.import-role:hover, .export-role:hover {
+    background-color: #0056b3; /* Darker blue on hover, adjust as needed */
+}
+
+
+
+
+
+/*################################ Role CRUD###################################*/
+.create-role{
+    padding:10px 20px 10px 20px;
+     color: #fff;
+     background-color: var(--create-button-color);
+     border:none;
+     border-radius: 10px;
+ }
+ /* create role page */
+ .create-role-form {
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+  
+  .create-role-form .name_label {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  
+  .create-role-form .forms-input {
+    margin-bottom: 20px;
+  }
+  .create-role-form label {
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .create-role-form input[type='text'],
+  .create-role-form input[type='password'] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .create-role-form .create-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--create-button-color);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition:  var(--tran-03);
+  }
+  
+  .create-role-form .create-btn:hover {
+    background-color: var(--create-hover-button-color);
+  }
+
+  /* Error */
+  .error-container {
+    margin-top: 10px; /* Adjust the margin-top as needed */
+}
+
+.error-msg {
+    background-color: rgb(246, 65, 65);
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.custom-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+
+  .custom-checkbox {
+    display: flex;
+   
+  }
+
+  
+  .custom-checkbox-input {
+    margin: 0 5px 5px 0;
+  }
+
+  .permission-indent {
+    margin-left: 50px; /* Indent the permissions */
+  }
+
+  
+  .custom-permissions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+
+/* Button Styles */
+#selectAllButton,
+#deselectAllButton {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--tran-03);
+}
+
+#selectAllButton:hover,
+#deselectAllButton:hover {
+    background-color: var(--primary-color-dark);
+    
+}
+.line{
+    margin-top: 15px;
+    color: var(--text-color);
+
+  }
+
+/* Select Styles */
+#permission {
+    width: 100%;
+    padding: 8px;
+   margin-top: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    transition: var(--tran-03);
+    line-height: 2;
+}
+#permission option {
+    padding: 10px 0;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    text-align: center;
+    border:1px solid var(--border-color);
+}
+
+/* Selected Options Container Styles */
+#selectedOptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    background-color: #fff;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.selected-option {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+   
+}
+
+.selected-option .remove-option {
+    margin-left: 4px;
+    cursor: pointer;
+    
+}
+
+/* Hidden Input Field Styles */
+#selectedOptionsInput {
+    display: none;
+}
+
+/* CSS for the back button container */
+.back {
+    display: flex;
+    align-items: center;
+}
+
+/* CSS for the back button */
+.back-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+/* Hover effect */
+.back-button:hover {
+    background-color: #2980b9;
+}
+
+/* Style for the back button icon (optional) */
+.back-button i {
+    margin-right: 5px;
+}
+
+
+/* Search */
+/* Search container */
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+/* Container for input and button */
+.input-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Make the container a positioning context */
+}
+
+/* Input field styles */
+.input-container input {
+    padding: 10px; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Add border styles */
+    border-radius: 5px; /* Rounded corners */
+    padding-right: 40px; /* Ensure space for the button */
+    min-width: 300px;
+}
+
+/* Button (search icon) styles */
+.input-container button {
+    position: absolute; /* Position the button absolutely within the container */
+    right: 5px; /* Adjust the right position as needed */
+    top: 50%; /* Vertically center the button */
+    transform: translateY(-50%); /* Vertically center the button */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Icon (search) styles */
+.input-container i {
+    color: #3498db; /* Icon color */
+    font-size: 20px; /* Adjust the font size as needed */
+}
+
+
+  /* #######Pagination Container####### */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Pagination List Items */
+.page-item {
+    margin: 0 5px; /* Add some space between items */
+}
+
+/* Pagination Links */
+.page-link {
+    padding: 5px 15px; /* Increase padding for better touch experience */
+    text-decoration: none;
+    border: 1px solid var(--black-light-color);
+    background-color: var(--toggle-color);
+    color: #333;
+    border-radius: 3px;
+    transition: var(--tran-03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-link:hover {
+    background-color: #f5f5f5;
+}
+
+/* Disabled Pagination Link */
+.page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Active Page Link */
+.page-item.active .page-link {
+    background-color: #3498db;
+    color: #fff;
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    .pagination-list {
+        justify-content: center;
+    }
+    /* Pagination List Items */
+    .page-item {
+        margin: 0; /* Remove margin to save space */
+    }
+    .page-link {
+        padding: 2px 8px; /* Adjust padding */
+        text-decoration: none;
+        border-radius: 2px;
+        font-size: 14px; /* Increase font size for smaller screens */
+    }
+}
+/* Action import show export */
+.action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This will align items to both ends horizontally */
+ 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.left{
+    flex:1;
+    display: flex;
+}
+.right{
+    display: flex;
+}
+
+
+.action-button {
+    margin-right: 10px;
+}
+
+.pagination-select {
+    display: flex;
+    /* align-items: left; */
+    /* justify-content: left; */
+    margin-right: 10px;
+}
+
+.pagination-select label {
+    margin-right: 5px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.pagination-select select{
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#delete-selected-button{
+    padding: 10px 17px;
+    color: #fff;
+    background-color: var(--delete-button-color);
+    border:none;
+    border-radius: 5px;
+    
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: var(--tran-03);
+
+}
+#delete-selected-button i{
+   margin-right: 5px;
+
+}
+#delete-selected-button:hover{
+    background-color:var(--delete-hover-button-color);
+}
+
+
+
+
+
+
+
