@@ -111,7 +111,7 @@ form{
     cursor: pointer;
 }
 .field button:hover{
-  
+
     background-color: var(--primary-hover-color);
 }
 .form-link{
@@ -157,7 +157,7 @@ form{
 a.facebook{
     color: #fff;
     background-color: var(--primary-color);
-    
+
 }
 a.facebook .facebook-icon{
     height: 28px;
@@ -195,7 +195,6 @@ a.google span{
 @media screen and (max-width: 400px) {
     .form{
         padding: 15px 10px;
-
     }
 }
 

@@ -38,7 +38,7 @@
 body{
     min-height: 100vh;
     background-color: var(--panel-color);
-   
+
 
 }
 body.dark{
@@ -54,7 +54,7 @@ body.dark{
     --box2-color:#3A3B3C;
     --box3-color:#3A3B3C;
     --title-icon-color:#ccc;
-   
+
 }
 /* nav bar */
 nav{
@@ -101,7 +101,7 @@ nav .logo .logo-name{
 nav.close .logo-name{
     opacity: 0;
     pointer-events: none;
- 
+
  }
 
 nav .menu-items{
@@ -120,12 +120,12 @@ nav .menu-items{
     height: 60px;
     text-decoration: none;
     position: relative;
-    
+
 }
 .nav-links {
-    
+
     overflow: auto;
-    max-height: 70vh; 
+    max-height: 70vh;
 }
 .nav-links::-webkit-scrollbar {
     display: none;
@@ -151,14 +151,14 @@ body.dark li a:hover:before{
     align-items: center;
     justify-content: center;
     color: var(--black-light-color);
-    
+
 }
 .menu-items li a .link-name{
     font-size: 18px;
     font-weight: 400;
     color: var(--black-light-color);
     transition: var(--tran-03);
-      
+
 }
 
 nav.close li a .link-name{
@@ -179,7 +179,7 @@ body.dark li a:hover .link-name{
 .menu-items .logout-mode {
     padding-top: 10px;
     border-top: 2px solid var(--border-color);
-    
+
 
 }
 /* Style for the sub-menu */
@@ -188,11 +188,11 @@ body.dark li a:hover .link-name{
     padding: 0;
      display: none;
      transition: all 0.3s;
-    
+
 }
 .menu-items li ul.sub-menu.show {
     display: block;
-   
+
 }
 /* Style for rotating the arrow */
 .arrow{
@@ -263,7 +263,7 @@ body.dark .switch:before{
     position: relative;
     left: 250px;
     background-color: var(--panel-color);
-   
+
     width: calc(100% - 250px);
     padding: 10px 14px;
     transition: var(--tran-05);
@@ -290,7 +290,7 @@ nav.close ~ .dashboard{
 nav.close ~ .dashboard .top{
     left: 73px;
     width: calc(100% - 73px);
-    
+
 }
 .dashboard .top .sidebar-toggle{
     font-size: 26px;
@@ -303,7 +303,7 @@ nav.close ~ .dashboard .top{
     max-width: 600px;
     width: 100%;
     margin: 0 30px;
-    
+
 }
 .top .search-box input{
     position: absolute;
@@ -331,14 +331,14 @@ nav.close ~ .dashboard .top{
 .user-detail {
     display: flex;
     align-items: center;
-    
+
   }
 .top .user-detail img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 5px;
-    
+
 }
 .top .user-detail .user-name{
     font-size: 18px;
@@ -350,7 +350,7 @@ nav.close ~ .dashboard .top{
 main{
     position: relative;
     left: 250px;
-    
+
     background-color: var(--panel-color);
     width: calc(100% - 250px);
     padding: 10px 14px;
@@ -358,36 +358,35 @@ main{
     transition: var(--tran-05);
     top: -20px;
     padding-left:17px ;
-   
+
 }
 nav.close ~ main{
     left: 73px;
     width: calc(100% - 73px);
     padding-left:17px ;
 
-    
+
 }
 
 
 
 @media (max-width: 1000px) {
     nav{
-        
         width:73px;
     }
     nav.close{
         width:250px;
     }
-   
+
     nav .logo-name{
         opacity: 0;
         pointer-events: none;
-     
+
      }
     nav.close .logo-name{
         opacity: 1;
         pointer-events: auto;
-     
+
      }
      nav li a .link-name{
         opacity: 0;
@@ -408,27 +407,27 @@ nav.close ~ main{
      nav ~ .dashboard .top{
         left: 73px;
         width: calc(100% - 73px);
-        
+
     }
      nav.close ~ .dashboard .top{
         left: 250px;
         width: calc(100% - 250px);
-        
+
     }
     nav ~ main{
         left: 73px;
         width: calc(100% - 73px);
-        
+
     }
     nav.close ~ main{
         left: 250px;
         width: calc(100% - 250px);
-        
+
     }
     .activity .activity-data{
         overflow-x: scroll;
     }
-  
+
 }
 @media (max-width: 780px) {
     .content .boxes .box{
@@ -439,16 +438,16 @@ nav.close ~ main{
         font-size: 14px;
         table-layout: auto;
       }
-    
+
       th,
       td {
         padding: 8px;
       }
-    
+
       table .button-group button {
         padding: 8px 16px;
       }
-    
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -456,11 +455,11 @@ nav.close ~ main{
     overflow: hidden;
     }
   }
-  
+
 @media (max-width: 560px) {
     .content .boxes .box{
         width: 100% ;
- 
+
     }
 }
 @media (max-width: 500px) {
@@ -470,16 +469,16 @@ nav.close ~ main{
     nav.close{
         width:73px;
     }
-   
+
     nav .logo-name{
         opacity: 0;
         pointer-events: none;
-     
+
      }
     nav.close .logo-name{
         opacity: 0;
         pointer-events: none;
-     
+
      }
      nav li a .link-name{
         opacity: 0;
@@ -500,22 +499,22 @@ nav.close ~ main{
      nav ~ .dashboard .top{
         left: 73px;
         width: calc(100% - 73px);
-        
+
     }
      nav.close ~ .dashboard .top{
         left: 73px;
         width: calc(100% - 73px);
-        
+
     }
     nav ~ main{
         left: 73px;
         width: calc(100% - 73px);
-        
+
     }
     nav.close ~ main{
         left: 73px;
         width: calc(100% - 73px);
-        
+
     }
     .dashboard .top .sidebar-toggle{
         display: none;

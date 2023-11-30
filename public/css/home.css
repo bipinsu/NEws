@@ -37,6 +37,7 @@
 
 body{
     min-height: 100vh;
+    min-height: 100vh;
     background-color: var(--panel-color);
 
 }
@@ -54,54 +55,114 @@ body.dark{
     --box3-color:#3A3B3C;
     --title-icon-color:#ccc;
 }
-header {
+nav{
+    width: 100%;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Style the first navbar */
+.navbar_first {
     background-color: var(--black-light-color);
     color: var(--text-color);
-    padding: 5px 0 0 10px;
+    height: auto;
+    cursor: pointer;
+    padding: 10px 10px 10px 120px; /* Adding padding for better spacing */
+
+}
+
+/* Style the icons and search box in the first navbar */
+.navbar_first .left {
     display: flex;
-    flex-direction: column; /* Change to column */
     align-items: center;
 }
 
-.header .links {
-    list-style-type: none;
-    margin: 10px 0; /* Add margin for spacing */
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Change to column */
-    align-items: center;
-}
-
-.header .links li {
-    margin-bottom: 10px; /* Add margin for spacing */
-}
-
-.header .links li a {
-    display: block;
-    color: var(--text-color);
-    text-align: center;
+.navbar_first .left .icon {
+    margin-right: 20px;
     text-decoration: none;
-    padding: 14px 16px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
 }
-.links li {
-    margin: 5px 15px 0 15px;
-}
-.icon i {
-    margin: 5px 5px 0 10px;
+
+.navbar_first .left .icon i {
+    margin: 5px 5px 0 5px;
     position: relative;
     height: 35px;
     width: 35px;
     border-radius: 6px;
     color: var(--title-icon-color);
     font-size: 24px;
-    margin-bottom: 10px; /* Add margin for spacing */
     transition: var(--tran-03) ;
 }
 .icon i:hover {
     transform: scale(1.2);
     color: var(--hover-color);
 }
+.navbar_first .left form {
+    display: flex;
+    align-items: center;
+}
 
+
+/* Style the right side of the first navbar */
+.navbar_first .right ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar_first .right ul li {
+    margin-right: 20px;
+}
+
+.navbar_first .right ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.navbar_first .right ul li a:hover {
+    color: var(--hover-color);
+}
+
+/* Style the second navbar */
+.navbar_second {
+    background-color: var(--primary-color);
+    color: #fff; /* Change text color to white for better visibility on a dark background */
+    padding: 10px 10px 10px 20px;
+    position: sticky;
+    top: 0;
+}
+
+/* Style the logo */
+.logo h1 {
+    color: #fff; /* Change logo color to white for better visibility on a dark background */
+    text-decoration: none; /* Remove default underline style */
+}
+
+/* Style the navigation links */
+.navbar_second ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar_second ul li {
+    margin-right: 20px;
+}
+
+.navbar_second ul li a {
+    text-decoration: none;
+    color: var(--panel-color);
+    transition: var(--tran-03);
+}
+
+.navbar_second ul li a:hover {
+    color: var(--text-color);
+}
+
+/* Search Box */
 .searchBox {
     display: flex;
     max-width: 300px;
@@ -151,50 +212,166 @@ button:active {
     font-size: 15px;
     padding: 24px 46px 24px 26px;
 }
+/* section{
+    width: 100%;
+    height: 150vh;
+} */
+@media only screen and (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
+    /* Style adjustments for the first navbar on mobile */
+    .navbar_first {
+        padding: 10px;
+    }
 
-nav {
-    background-color: var(--primary-color);
-    color: var(--text-color);
+    .navbar_first .left {
+        margin-bottom: 10px;
+    }
+
+    .navbar_first .right {
+        margin-top: 10px;
+    }
+
+    .navbar_first .right ul {
+        flex-direction: column;
+    }
+
+    /* Style adjustments for the second navbar on mobile */
+    .navbar_second {
+        padding: 10px;
+    }
+
+    .navbar_second ul {
+        flex-direction: column;
+    }
+
+    .searchBox {
+        max-width: 100%;
+    }
+
+    .searchInput {
+        padding: 10px;
+    }
+
+    .searchButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Additional responsive styles as needed */
 }
+@media only screen and (max-width: 250px) {
+    .flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-.navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    /* Style adjustments for the first navbar on mobile */
+    .navbar_first {
+        padding: 10px;
+    }
+
+    .navbar_first .left {
+        margin-bottom: 10px;
+    }
+
+    .navbar_first .right {
+        margin-top: 10px;
+    }
+
+    .navbar_first .right ul {
+        flex-direction: column;
+    }
+
+    /* Style adjustments for the second navbar on mobile */
+    .navbar_second {
+        padding: 10px;
+    }
+
+    .navbar_second ul {
+        flex-direction: column;
+    }
+
+    .searchBox {
+        max-width: 100%;
+    }
+
+    .searchInput {
+        padding: 10px;
+    }
+
+    .searchButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Additional responsive styles as needed */
 }
+@media only screen and (max-width: 600px) {
+    .flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-.logo a {
-    color: var(--panel-color);
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
+    /* Style adjustments for the first navbar on mobile */
+    .navbar_first {
+        padding: 10px;
+    }
+
+    .navbar_first .left {
+        margin-bottom: 10px;
+    }
+
+    .navbar_first .left .icon {
+        margin-right: 10px;
+    }
+
+    .navbar_first .left .icon i {
+        font-size: 20px;
+    }
+
+    .navbar_first .right {
+        margin-top: 10px;
+    }
+
+    .navbar_first .right ul {
+        flex-direction: column;
+    }
+
+    .navbar_first .right ul li {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    /* Style adjustments for the second navbar on mobile */
+    .navbar_second {
+        padding: 10px;
+    }
+
+    .navbar_second ul {
+        flex-direction: column;
+    }
+
+    .navbar_second ul li {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .searchBox {
+        max-width: 100%;
+    }
+
+    .searchInput {
+        padding: 10px;
+    }
+
+    .searchButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Additional responsive styles as needed */
 }
-
-.links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.links li {
-    margin-right: 20px;
-}
-
-.links a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.links a:hover {
-    color: var(--border-color);
-}
-
-
-
-
-
-
