@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\PermissionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 // login logout
 Route::get('/login', [LoginController::class, 'login'])->name('login');
