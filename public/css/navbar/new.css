@@ -7,12 +7,18 @@
 
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: hsl(230, 75%, 56%);
-    --title-color: hsl(230, 75%, 15%);
-    --text-color: hsl(230, 12%, 40%);
-    --body-color: hsl(230, 100%, 98%);
-    --container-color: hsl(230, 100%, 97%);
-    --border-color: hsl(230, 25%, 80%);
+
+
+    /*  */
+    --first-color: #0E4BF1;
+    --title-color: #FFF;
+    --text-color: #000;
+    --nav-color: #FFF ;
+    --body-color: #FFF;
+    --border-color: #e6e5e5;
+    --hover-color: #0E4BF1;
+    --hover2-color:#4DA3FF;
+
 
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
@@ -62,6 +68,42 @@ html {
 
 .nav__link, .nav__logo{
     text-decoration: none;
+}
+.nav__link i{
+    font-size: 10px;
+    min-width: 5px;
+    /* height: 100%; */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+
+/*=============== Drop down ===============*/
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--border-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    float: none;
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a:hover {
+    background-color: var(--hover2-color);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 
@@ -116,11 +158,11 @@ html {
 
 /*=============== HEADER & NAV ===============*/
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--body-color);
+    background-color: var(--nav-color);
     box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
     z-index: var(--z-fixed);
 }
@@ -133,7 +175,7 @@ html {
 }
 
 .nav__logo {
-    color: var(--title-color);
+    color: var(--text-color);
     font-weight: var(--font-semi-bold);
     transition: color .4s;
 }
@@ -145,17 +187,16 @@ html {
 }
 
 .nav__search,
-.nav__login,
 .nav__toggle,
 .nav__close {
     font-size: 1.25rem;
-    color: var(--title-color);
+    color: var(--text-color);
     cursor: pointer;
     transition: color .4s;
 }
 
-:is(.nav__logo, .nav__search, .nav__login, .nav__toggle, .nav__link):hover {
-    color: var(--first-color);
+:is(.nav__logo, .nav__search, .nav__toggle, .nav__link):hover {
+    color: var(--hover-color);
 }
 
 /* Navigation for mobile devices */
@@ -180,7 +221,7 @@ html {
 }
 
 .nav__link {
-    color: var(--title-color);
+    color: var(--text-color);
     font-weight: var(--font-semi-bold);
     transition: color .4s;
 }
@@ -211,7 +252,7 @@ html {
 
 .search__icon {
     font-size: 1.25rem;
-    color: var(--title-color);
+    color: var(--text-color);
 }
 
 .search__input {
@@ -237,100 +278,11 @@ html {
     transform: translateY(0);
 }
 
-/*=============== LOGIN ===============*/
-.login__form,
-.login__group {
-    display: grid;
-}
-
-.login__form {
-    background-color: var(--container-color);
-    padding: 2rem 1.5rem 2.5rem;
-    box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
-    border-radius: 1rem;
-    row-gap: 1.25rem;
-    text-align: center;
-    transform: translateY(-1rem);
-    transition: transform .4s;
-}
-
-.login__title {
-    font-size: var(--h2-font-size);
-    color: var(--title-color);
-}
-
-.login__group {
-    row-gap: 1rem;
-}
-
-.login__label {
-    display: block;
-    text-align: initial;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    margin-bottom: .25rem;
-}
-
-.login__input {
-    width: 100%;
-    background-color: var(--container-color);
-    border: 2px solid var(--border-color);
-    padding: 1rem;
-    border-radius: .5rem;
-    color: var(--text-color);
-}
-
-.login__input::placeholder {
-    color: var(--text-color);
-}
-
-.login__signup {
-    margin-bottom: .5rem;
-}
-
-.login__signup a {
-    color: var(--first-color);
-}
-
-.login__forgot {
-    display: inline-block;
-    color: var(--first-color);
-    margin-bottom: 1.25rem;
-}
-
-.login__button {
-    border: none;
-    outline: none;
-    display: inline-block;
-    background-color: var(--first-color);
-    width: 100%;
-    color: #fff;
-    font-weight: var(--font-semi-bold);
-    padding: 1rem;
-    border-radius: .5rem;
-    cursor: pointer;
-    transition: box-shadow .4s;
-}
-
-.login__button:hover {
-    box-shadow: 0 4px 24px hsla(230, 75%, 40%, .4);
-}
-
-/* Show login */
-.show-login {
-    opacity: 1;
-    pointer-events: initial;
-}
-
-.show-login .login__form {
-    transform: translateY(0);
-}
 
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {
-    .search,
-    .login {
+    .search {
         padding-top: 10rem;
     }
 
@@ -339,8 +291,7 @@ html {
         margin-inline: auto;
     }
 
-    .search__close,
-    .login__close {
+    .search__close {
         width: max-content;
         top: 5rem;
         left: 0;
@@ -349,10 +300,6 @@ html {
         font-size: 2rem;
     }
 
-    .login__form {
-        max-width: 400px;
-        margin-inline: auto;
-    }
 }
 
 /* For large devices */
@@ -371,10 +318,6 @@ html {
     .nav__list {
         flex-direction: row;
         column-gap: 3rem;
-    }
-
-    .login__form {
-        padding: 3rem 2rem 3.5rem;
     }
 }
 
