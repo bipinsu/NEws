@@ -26,7 +26,7 @@
         </div>
         <div class="right flex">
             @auth
-               Welcome {{ auth()->user()->name }}
+                Welcome {{ auth()->user()->name }}
             @else
                 <ul class="flex">
                     <li><a href="{{ route('login') }}">Login</a></li>
