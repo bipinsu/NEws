@@ -29,7 +29,7 @@
                Welcome {{ auth()->user()->name }}
             @else
                 <ul class="flex">
-                    <li><a href="{{ route('login') }}">login</a></li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Signup</a></li>
                     {{-- <li><a href="#">Contact Us </a></li>
                     <li><a href="#"> Write for us</a></li> --}}
