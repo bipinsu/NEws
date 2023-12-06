@@ -49,6 +49,7 @@
                 <li><a href="#">Company</a></li>
             </ul>
     </nav>
+
     <section>
         <main>
             @yield('content')
