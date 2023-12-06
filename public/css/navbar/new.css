@@ -129,8 +129,7 @@ html {
     z-index: -1;
 }
 
-.search,
-.login {
+.search {
     position: fixed;
     left: 0;
     top: 0;
@@ -146,8 +145,7 @@ html {
     transition: opacity .4s;
 }
 
-.search__close,
-.login__close {
+.search__close {
     position: absolute;
     top: 2rem;
     right: 2rem;
