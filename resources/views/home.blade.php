@@ -25,12 +25,18 @@
             </form>
         </div>
         <div class="right flex">
-            <ul class="flex">
-                <li><a href="{{ route('login') }}">login</a></li>
-                <li><a href="{{ route('registration') }}">Signup</a></li>
-                {{-- <li><a href="#">Contact Us </a></li>
-                <li><a href="#"> Write for us</a></li> --}}
-            </ul>
+            @auth
+               Welcome {{ auth()->user()->name }}
+            @else
+                <ul class="flex">
+                    <li><a href="{{ route('login') }}">login</a></li>
+                    <li><a href="{{ route('register') }}">Signup</a></li>
+                    {{-- <li><a href="#">Contact Us </a></li>
+                    <li><a href="#"> Write for us</a></li> --}}
+                </ul>
+            @endauth
+
+
         </div>
     </nav>
     <nav class="navbar_second flex">

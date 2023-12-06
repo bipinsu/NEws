@@ -29,7 +29,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'loginPost']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // register user
-Route::get('/registration', [RegisterController::class, 'registration'])->name('registration');
+Route::get('/registration', [RegisterController::class, 'registration'])->name('register');
 Route::post('/register', [RegisterController::class, 'registerPost']);
 
 // Route::get('/admin/permissions/import', [PermissionController::class, 'import'])->name('admin.permissions.import')->middleware('auth');
