@@ -36,17 +36,17 @@
                         <a href="#" class="nav__link">Market</a>
                     </li>
 
-                    <li class="nav__item">
-                        <div class="dropdown">
-                            <a class="nav__link">Company
-                                <i class='bx bxs-down-arrow'></i>
-                            </a>
+                    <li class="nav__item dropdown">
+                        <a class="nav__link ">Company
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+
                             <div class="dropdown-content">
                                 <a href="#">Link 1</a>
                                 <a href="#">Link 2</a>
                                 <a href="#">Link 3</a>
                             </div>
-                        </div>
+
                     </li>
                 </ul>
 

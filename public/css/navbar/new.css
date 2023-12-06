@@ -69,6 +69,7 @@ html {
 .nav__link, .nav__logo{
     text-decoration: none;
 }
+
 .nav__link i{
     font-size: 10px;
     min-width: 5px;
@@ -84,27 +85,32 @@ html {
     overflow: hidden;
 }
 .dropdown-content {
+
     display: none;
     position: absolute;
     background-color: var(--nav-color);
     min-width: 160px;
+    border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 .dropdown-content a {
     float: none;
     color: var(--text-color);
+    border-radius: 10px;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
 }
 .dropdown-content a:hover {
-    background-color: var(--hover2-color);
+    color: var(--hover2-color);
+    background-color: var(--border-color);
 }
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -198,7 +204,18 @@ html {
 }
 
 /* Navigation for mobile devices */
+
 @media screen and (max-width: 1023px) {
+    .nav__list {
+        flex-direction: column;
+        row-gap: 2.5rem;
+        text-align: center;
+    }
+    .nav__close {
+        position: absolute;
+        top: 1.15rem;
+        right: 1.5rem;
+    }
     .nav__menu {
         position: fixed;
         top: -100%;
@@ -208,6 +225,22 @@ html {
         width: 100%;
         padding-block: 4.5rem 4rem;
         transition: top .4s;
+    }
+    .dropdown-content {
+        position: absolute;
+        display: none;
+        background-color: var(--nav-color);
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown-content a{
+        text-align: center;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
     }
 }
 
