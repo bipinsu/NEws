@@ -105,9 +105,11 @@
     </div>
 
     <!--==================== MAIN ====================-->
-    <main>
-        @yield('content')
-    </main>
+    <section>
+        <main>
+            @yield('content')
+        </main>
+    </section>
 
     <!--=============== MAIN JS ===============-->
     <script src="js/new.js"></script>
