@@ -15,26 +15,77 @@
 <body class="nav_body">
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
-        <nav class="nav container">
+        <nav class="nav ">
             <a href="#" class="nav__logo">NEWS</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item">
+                    {{-- <li class="nav__item">
                         <a href="#" class="nav__link">Home</a>
+                    </li> --}}
+
+                    <li class="nav__item dropdown">
+                        <a  href="#" class="nav__link">News
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+                            <div class="dropdown-content">
+                                <a href="#">All News</a>
+                                <a href="#">Anouncment</a>
+                            </div>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">News</a>
+                    <li class="nav__item dropdown">
+                        <a href="#" class="nav__link">Economy
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">Inflation</a>
+                            <a href="#">Gold & Silver Price</a>
+                            <a href="#">GDP & Market Cap</a>
+                            <a href="#">GDP Growth & NEPSE</a>
+                            <a href="#">Weekly Deposite & Lending</a>
+                            <a href="#">Govetment Revenue & Expenditure</a>
+                            <a href="#">Capital Expenditure</a>
+                            <a href="#">Remitance</a>
+                            <a href="#">BFIs Deposite/Lending Growth </a>
+                            <a href="#">Short-Term Interest Rates</a>
+                            <a href="#">Bugdet Surplus/Deficit Status</a>
+
+                        </div>
+                    </li>
+                    <li class="nav__item dropdown">
+                        <a href="#" class="nav__link">Market
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">Market Overview</a>
+                            <a href="#">Live Trading</a>
+                            <a href="#">Stock Heat Map</a>
+                            <a href="#">Today's Share Price</a>
+                            <a href="#">FloorSheet</a>
+                            <a href="#">AGM/SGM</a>
+                            <a href="#">PRoposed Dividend</a>
+                            <a href="#">Sectorwise Share Price</a>
+                            <a href="#">INdicies / Sub-indices</a>
+                            <a href="#">Datewise Indices</a>
+                            <a href="#">Top Brokers</a>
+                            <a href="#">NEPSE Candlestick Chart</a>
+                            <a href="#">Index History Data</a>
+                        </div>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">Economy</a>
+                    <li class="nav__item dropdown">
+                        <a href="#" class="nav__link">IPO/FPO
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">Check IPO/FPO Result</a>
+                            <a href="#">IPO/FPO News</a>
+                            <a href="#">IPO/FPO Allotment News</a>
+                        </div>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">Market</a>
-                    </li>
+
 
                     <li class="nav__item dropdown">
                         <a class="nav__link ">Company
@@ -42,13 +93,41 @@
                         </a>
 
                             <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
+                                <a href="#">Listed Companies</a>
+                                <a href="#">Mutual Funds & NAVs</a>
+                                <a href="#">MErged Companies</a>
+                                <a href="#">Merged & Acquisitions</a>
+                                <a href="#">Trading Suspended Companies</a>
+                                <a href="#">Name Changed Companies</a>
                             </div>
 
                     </li>
+                    <li class="nav__item dropdown">
+                        <a class="nav__link ">Investment
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+
+                            <div class="dropdown-content">
+                                <a href="#">Investment Overview</a>
+                                <a href="#">Existing Issues</a>
+                                <a href="#">Upcoming Issues</a>
+                                <a href="#">Auction</a>
+                            </div>
+                    </li>
+                    <li class="nav__item dropdown">
+                        <a class="nav__link ">Training
+                            <i class='bx bxs-down-arrow'></i>
+                        </a>
+
+                            <div class="dropdown-content">
+                                <a href="#">Indepth Training</a>
+                                <a href="#">Technical Analysis</a>
+                                <a href="#">Registration Form</a>
+                            </div>
+                    </li>
+
                 </ul>
+
 
                 <!-- Close button -->
                 <div class="nav__close" id="nav-close">
