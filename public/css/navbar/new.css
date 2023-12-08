@@ -3,7 +3,7 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-    --header-height: 3.5rem;
+    --header-height: 2.5rem;
 
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
@@ -64,17 +64,30 @@ html {
 
 .nav__list {
     list-style: none;
+    font-size: 14px;
 }
 
 .nav__link, .nav__logo{
     text-decoration: none;
 }
+.nav__link{
+    background-color: var(--body-color);
+    color: var(--text-color);
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+.nav__link:hover{
+    background-color: var(--border-color);
+    color: var(--hover-color);
+    transition: all 0.2s ease;
+}
 
 .nav__link i{
-    font-size: 10px;
+    font-size: 8px;
     min-width: 5px;
-    /* height: 100%; */
-    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
@@ -83,9 +96,11 @@ html {
 .dropdown {
     float: left;
     overflow: hidden;
+
 }
 .dropdown-content {
-
+    overflow-y: auto;
+    max-height: 550px;
     display: none;
     position: absolute;
     background-color: var(--nav-color);
@@ -93,7 +108,24 @@ html {
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var( --first-color) #f9f9f9; /* Firefox */
 }
+.dropdown-content::-webkit-scrollbar {
+    width: 10px; /* WebKit */
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background-color: var( --text-color) ;/* Color of the thumb */
+    border-radius: 10px; /* Rounded corners of the thumb */
+
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    background-color: var(--nav-color); /* Color of the track */
+    border-radius: 10px; /* Rounded corners of the track */
+}
+
 .dropdown-content a {
     float: none;
     color: var(--text-color);
@@ -107,16 +139,21 @@ html {
     color: var(--hover2-color);
     background-color: var(--border-color);
 }
-.dropdown:hover .dropdown-content {
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
     display: block;
 }
 
 
-
 /*=============== REUSABLE CSS CLASSES ===============*/
-.container {
+.nav {
     max-width: 1120px;
     margin-inline: 1.5rem;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main {
@@ -166,22 +203,21 @@ html {
     top: 0;
     left: 0;
     width: 100%;
+    height: 4.5rem;
     background-color: var(--nav-color);
     box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
     z-index: var(--z-fixed);
 }
 
-.nav {
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* .nav {
+
+} */
 
 .nav__logo {
     color: var(--text-color);
     font-weight: var(--font-semi-bold);
     transition: color .4s;
+    margin-left:-70px;
 }
 
 .nav__actions {
@@ -199,7 +235,7 @@ html {
     transition: color .4s;
 }
 
-:is(.nav__logo, .nav__search, .nav__toggle, .nav__link):hover {
+:is(.nav__logo, .nav__search, .nav__toggle):hover {
     color: var(--hover-color);
 }
 
@@ -215,6 +251,13 @@ html {
         position: absolute;
         top: 1.15rem;
         right: 1.5rem;
+    }
+    .nav__logo {
+
+        margin-left:0;
+    }
+    .nav{
+        padding-top: 25px;
     }
     .nav__menu {
         position: fixed;
@@ -353,7 +396,7 @@ html {
 }
 
 @media screen and (min-width: 1150px) {
-    .container {
+    .nav {
         margin-inline: auto;
     }
 }
