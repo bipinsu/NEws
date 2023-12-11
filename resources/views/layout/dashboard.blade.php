@@ -45,7 +45,7 @@
                 <img src="{{ asset($logoPath) }}" alt="Logo">
             </div>
             {{-- Name of website --}}
-            <span class="logo-name">New</span>
+            <span class="logo-name">News</span>
         </div>
 
         {{-- sidebar --}}
@@ -146,12 +146,14 @@
                         </li>
                     </ul>
                 </li>
-                <li id="setting">
-                    <a href="#">
+                <li id="nav_content">
+                    <a href="{{ route('admin.nav_contents.index') }}">
                         <i class='bx bx-customize'></i>
                         <span class="link-name">Nav Content</span>
+                        <i class='bx bx-chevron-left arrow'></i>
 
                     </a>
+
                 </li>
             </ul>
 

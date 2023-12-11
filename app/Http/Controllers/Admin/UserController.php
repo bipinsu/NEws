@@ -30,7 +30,6 @@ class UserController extends Controller
             // If it's an AJAX request, return the updated pagination data as a rendered view
             return view('vendor.pagination.custom', ['users' => $users])->render();
         }
-        //Activity Log
 
 
         // Store the selected value in the session

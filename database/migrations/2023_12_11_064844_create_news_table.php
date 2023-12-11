@@ -13,7 +13,22 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('nav_headings_id');
+            $table->unsignedBigInteger('nav_sub_headings_id');
+            $table->string('title');
+            $table->string('description');
+            $table->string('image');
             $table->timestamps();
+
+             // Foreign keys
+             $table->foreign('nav_headings_id')
+             ->references('id')
+             ->on('nav_headings')
+             ->onDelete('cascade');
+             $table->foreign('nav_sub_headings_id')
+             ->references('id')
+             ->on('nav_sub_headings')
+             ->onDelete('cascade');
         });
     }
 

@@ -13,8 +13,16 @@ return new class extends Migration
     {
         Schema::create('nav_sub_headings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('nav_headings_id');
+            $table->string('name');
             $table->timestamps();
-        });
+
+            // Foreign keys
+            $table->foreign('nav_headings_id')
+            ->references('id')
+            ->on('nav_headings')
+            ->onDelete('cascade');
+    });
     }
 
     /**

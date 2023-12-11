@@ -8,9 +8,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
-
-
-
+use App\Http\Controllers\User\NavContent;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,11 +41,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     })->name('dashboard');
     // Logo route
     Route::resource('logos', LogoController::class);
+    Route::resource('nav_contents',NavContent::class);
+    Route::post('/nav_contents/delete-selected', [NavContent::class, 'deleteSelected'])->name('nav_contents.deleteSelected')->middleware('permission:delete_user');
+    // Import Export nav_contents
+    Route::get('/nav_contents/import', [NavContent::class, 'import'])->name('nav_contents.import')->middleware('permission:import_user');
+    Route::post('/nav_contents/import', [NavContent::class, 'importPermission'])->name('nav_contents.import.store')->middleware('permission:import_user');
+    Route::post('/nav_contents/exportpdf', [NavContent::class, 'exportpdf'])->name('nav_contents.exportpdf')->middleware('permission:export_user');
+    Route::post('/nav_contents/exportselectedcsv', [NavContent::class, 'exportselectedcsv'])->name('nav_contents.exportselectedcsv')->middleware('permission:export_user');
+    Route::post('/nav_contents/{user}/restore', [NavContent::class, 'restore'])->name('nav_contents.restore');
+    Route::delete('/nav_contents/{user}/force-delete', [NavContent::class, 'forceDelete'])->name('nav_contents.force-delete');
 
     Route::get('/permissions/search', [PermissionController::class, 'search'])->name('permissions.search');
     Route::get('/roles/search', [RoleController::class, 'search'])->name('roles.search');
     Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
     Route::get('/activity_log/search', [ActivityLogController::class, 'search'])->name('activity_log.search');
+    Route::get('/nav_contents/search', [NavContent::class, 'search'])->name('nav_contents.search');
     Route::get('/users/profile', [UserController::class, 'profile'])->name('users.profile');
     Route::post('/users/profileUpdate', [UserController::class, 'profileUpdate'])->name('users.profileUpdate');
 
@@ -70,8 +78,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::post('/users/import', [UserController::class, 'importPermission'])->name('users.import.store')->middleware('permission:import_user');
     Route::post('/users/exportpdf', [UserController::class, 'exportpdf'])->name('users.exportpdf')->middleware('permission:export_user');
     Route::post('/users/exportselectedcsv', [UserController::class, 'exportselectedcsv'])->name('users.exportselectedcsv')->middleware('permission:export_user');
-    Route::post('/users/{user}/restore', [UsersController::class, 'restore'])->name('users.restore');
-    Route::delete('/users/{user}/force-delete', [UsersController::class, 'forceDelete'])->name('users.force-delete');
+    Route::post('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
+    Route::delete('/users/{user}/force-delete', [UserController::class, 'forceDelete'])->name('users.force-delete');
     // Permission
     // Route::resource('/permissions', PermissionController::class);
     // CRUD
