@@ -11,36 +11,41 @@
     <link rel="stylesheet" href="/css/admin/dashboardlayout.css">
     {{-- JS --}}
     <script defer  src="/js/admin/dashboard.js"></script>
-    
+
 
 </head>
 <body >
- 
+
     <script>
         (function() {
-            const body = document.querySelector("body");         
+            const body = document.querySelector("body");
             let getMode = localStorage.getItem("mode");
             if (getMode && getMode === "dark") {
                 body.classList.add("dark");
             } else {
                 body.classList.remove("dark");
             }
-          
+
         })();
     </script>
-    
-   
 
-   
+
+
+
     <nav>
-        {{-- Nav logo --}}
-        <div class="logo">
+         {{-- Nav logo --}}
+         <div class="logo">
+            @php
+                $logo = App\Models\Logo::first();
+                $logoId = $logo->id;
+                $logoPath = $logo ? $logo->path : null;
+            @endphp
             {{-- nav logo --}}
             <div class="logo-image">
-                <img src="{{asset('logo/logo.png')}}" alt="">
+                <img src="{{ asset($logoPath) }}" alt="Logo">
             </div>
             {{-- Name of website --}}
-            <span class="logo-name">Broker Free</span>
+            <span class="logo-name">News</span>
         </div>
         {{-- sidebar --}}
         <div class="menu-items">
@@ -90,18 +95,58 @@
                         </li>
                     @endcan
                     </ul>
-                 
+
 
 
                 </li>
-                <li>
-                    <a href="{{ route('admin.activity_log.index') }}">
-                        <i class='bx bxs-time' ></i>
+                <li id="activity_log">
+                    <a id="activity_log_link">
+                        <i class='bx bxs-time'></i>
                         <span class="link-name">Activity Log</span>
+                        <i class='bx bx-chevron-left arrow'></i>
                     </a>
+                    <ul class="sub-menu" id="activity_log_sub_menu">
+                        {{-- Users --}}
+                        <li>
+                            <a href="{{ route('admin.activity_log.index', 'user') }}">
+                                <i class='bx bxs-user'></i>
+                                <span class="link-name">User</span>
+                            </a>
+                        </li>
+                        {{-- Permission --}}
+                        <li>
+                            <a href="{{ route('admin.activity_log.index', 'permission') }}">
+                                <i class='bx bxs-lock-open'></i>
+                                <span class="link-name">Permission</span>
+                            </a>
+                        </li>
+                        {{-- Role --}}
+                        <li>
+                            <a href="{{ route('admin.activity_log.index', 'role') }}">
+                                <i class='bx bxs-briefcase'></i>
+                                <span class="link-name">Role</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="setting">
+                    <a id="setting_link">
+                        <i class='bx bxs-cog'></i>
+                        <span class="link-name">Setting</span>
+                        <i class='bx bx-chevron-left arrow'></i>
+                    </a>
+                    <ul class="sub-menu" id="setting_sub_menu">
+                        <li>
+
+                            <a href="{{ route('admin.logos.edit', $logoId) }}">
+                                <i class='bx bxs-image'></i>
+                                <span class="link-name">Update Logo</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-            
+
             <ul class="logout-mode">
                 {{-- logout --}}
                 <li>
@@ -127,7 +172,7 @@
         (function() {
             const sidebarToggle = document.querySelector(".sidebar-toggle");
             const sidebar = document.querySelector("nav");
-    
+
             // Apply the sidebar status from localStorage
             let getStatus = localStorage.getItem("status");
             if (getStatus === "close") {
@@ -135,8 +180,8 @@
             } else if (getStatus === "open") {
                 sidebar.classList.remove("close");
             }
-    
-  
+
+
         })();
     </script>
       <script>
@@ -144,10 +189,35 @@
         const userManagementItem = document.getElementById('user_mgmt');
         const subMenu = document.getElementById("user_sub_menu");
         const arrow = userManagementItem.querySelector('.arrow');
-    
+
         userManagementItem.addEventListener("click", () => {
             subMenu.classList.toggle("show");
             arrow.classList.toggle('rotate');
+        });
+
+    </script>
+    <script>
+
+        // Activity Log
+        const activityLogLink = document.getElementById('activity_log_link');
+        const activityLogSubMenu = document.getElementById('activity_log_sub_menu');
+        const activityLogArrow = activityLogLink.querySelector('.arrow');
+
+        activityLogLink.addEventListener('click', () => {
+            activityLogSubMenu.classList.toggle('show');
+            activityLogArrow.classList.toggle('rotate');
+        });
+    </script>
+    <script>
+
+        // Setting
+        const settingLink = document.getElementById('setting_link');
+        const settingSubMenu = document.getElementById('setting_sub_menu');
+        const settingArrow = settingLink.querySelector('.arrow');
+
+        settingLink.addEventListener('click', () => {
+            settingSubMenu.classList.toggle('show');
+            settingArrow.classList.toggle('rotate');
         });
     </script>
     <section class="dashboard">
@@ -159,16 +229,17 @@
             </div> --}}
             <div class="user-detail">
                 {{-- <img src="{{asset('profile/profile.jpg')}}" alt="no img"> --}}
-                <span class="user-name">Welcome {{auth()->user()->name}}</span>
+                <span class="user-name">Welcome <a href="{{ route('admin.users.profile') }}"> <span
+                            class="user-name-name">{{ auth()->user()->name }}</span></a></span>
             </div>
-            
+
         </div>
     </section>
     @include('layout.toastr')
     <main>
         @yield('main')
     </main>
-    
+
 </body>
 
 </html>

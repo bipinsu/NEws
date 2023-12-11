@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ActivityLogController;
 
 
 
@@ -38,16 +40,19 @@ Route::post('/register', [RegisterController::class, 'registerPost']);
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard.dashboard');
-    });
+    })->name('dashboard');
+    // Logo route
+    Route::resource('logos', LogoController::class);
 
     Route::get('/permissions/search', [PermissionController::class, 'search'])->name('permissions.search');
     Route::get('/roles/search', [RoleController::class, 'search'])->name('roles.search');
     Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
     Route::get('/activity_log/search', [ActivityLogController::class, 'search'])->name('activity_log.search');
-
+    Route::get('/users/profile', [UserController::class, 'profile'])->name('users.profile');
+    Route::post('/users/profileUpdate', [UserController::class, 'profileUpdate'])->name('users.profileUpdate');
 
     // Activity Log
-    Route::get('/activity_log', [ActivityLogController::class, 'index'])->name('activity_log.index');
+    Route::get('/activity_log/index/{type}', [ActivityLogController::class, 'index'])->name('activity_log.index');
 
     // User
     // Route::resource('/users', UserController::class);
@@ -65,6 +70,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::post('/users/import', [UserController::class, 'importPermission'])->name('users.import.store')->middleware('permission:import_user');
     Route::post('/users/exportpdf', [UserController::class, 'exportpdf'])->name('users.exportpdf')->middleware('permission:export_user');
     Route::post('/users/exportselectedcsv', [UserController::class, 'exportselectedcsv'])->name('users.exportselectedcsv')->middleware('permission:export_user');
+    Route::post('/users/{user}/restore', [UsersController::class, 'restore'])->name('users.restore');
+    Route::delete('/users/{user}/force-delete', [UsersController::class, 'forceDelete'])->name('users.force-delete');
     // Permission
     // Route::resource('/permissions', PermissionController::class);
     // CRUD
