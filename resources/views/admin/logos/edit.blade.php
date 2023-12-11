@@ -7,13 +7,13 @@
         </a>
     </div>
 <h1>Edit Logo</h1>
-    <form class="logo_edit" method="POST" action="{{ route('admin.logos.update', $logo->id) }}" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+        <form class="logo_edit" method="POST" action="{{ route('admin.logos.update', $logo->id) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
-        <label for="image">Logo Image:</label>
-        <input type="file" name="image">
+            <label for="image">Logo Image:</label>
+            <input type="file" name="image">
 
-        <button type="submit">Update Logo</button>
-    </form>
+            <button type="submit">Update Logo</button>
+        </form>
 @endsection

@@ -146,10 +146,11 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li id="setting">
                     <a href="#">
                         <i class='bx bx-customize'></i>
                         <span class="link-name">Nav Content</span>
+
                     </a>
                 </li>
             </ul>
