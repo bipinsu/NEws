@@ -16,6 +16,7 @@ return new class extends Migration
             // Add the 'user_id' field as a foreign key
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('user_name');
             $table->string('email');
             $table->string('request_type');
             $table->string('ip_address');
@@ -23,10 +24,10 @@ return new class extends Migration
             $table->string('description');
             $table->string('activity_type');
             $table->string('url');
-            $table->string('changed_id');
+            $table->json('changed_id');
             $table->json('data')->nullable();
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

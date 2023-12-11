@@ -45,7 +45,7 @@
                 <img src="{{ asset($logoPath) }}" alt="Logo">
             </div>
             {{-- Name of website --}}
-            <span class="logo-name">Broker Free</span>
+            <span class="logo-name">New</span>
         </div>
 
         {{-- sidebar --}}
