@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     margin: 60px 0 30px 0;
-} 
+}
 .content .title i{
     position: relative;
     height: 35px;
@@ -49,7 +49,7 @@
     color: var(--text-color);
 }
 .boxes .box .number{
-   
+
     font-size: 40px;
     font-weight: 500;
     color: var(--text-color);
@@ -94,8 +94,8 @@
     border-collapse: collapse;
     color:var(--text-color);
     table-layout: fixed;
-   
-   
+
+
 }
 table, th, td {
     border: 1px solid #ccc;
@@ -127,7 +127,7 @@ th:first-child {
     width: 35px;
 }
 .all-button{
-   
+
 }
 table .button-group {
     width: 100%;
@@ -302,7 +302,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     border-radius: 10px;
 }
 .create-user:hover{
-    background-color:var(--create-hover-button-color); 
+    background-color:var(--create-hover-button-color);
 }
 .all-role-table{
     overflow-x: scroll;
@@ -316,25 +316,25 @@ td input[type="checkbox"], th input[type="checkbox"] {
 
  /* create role page */
  .create-user-form {
-    max-width: 400px; 
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     background-color: var(--panel-color);
     border: 1px solid var(--border-color);
     border-radius: 10px;
   }
-  
+
   .create-user-form label {
     color: var(--text-color);
     display: block;
     margin-bottom: 5px;
     font-weight: 400;
   }
-  
+
   .create-user-form .forms-input {
     margin-bottom: 20px;
   }
-  
+
   .create-user-form input {
     width: 100%;
     padding: 10px;
@@ -343,7 +343,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     font-size: 16px;
     outline: none;
   }
-  
+
   .create-user-form .create-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -355,7 +355,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     font-size: 18px;
     transition: var(--tran-03);
   }
-  
+
   .create-user-form .create-btn:hover {
     background-color: var(--create-hover-button-color);
   }
@@ -364,7 +364,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
 }
 
 .password {
-    padding-right: 40px; 
+    padding-right: 40px;
 }
 
 .eye-icon {
@@ -465,7 +465,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     border-radius: 4px;
     font-size: 7px;
     color: #fff;
-    font-weight:600; 
+    font-weight:600;
 }
 /* inport export btn */
 .import, .export {
@@ -542,21 +542,21 @@ td input[type="checkbox"], th input[type="checkbox"] {
  }
  /* create role page */
  .create-role-form {
-    max-width: 800px; 
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: var(--panel-color);
     border: 1px solid var(--border-color);
     border-radius: 10px;
   }
-  
+
   .create-role-form .name_label {
     color: var(--text-color);
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
   }
-  
+
   .create-role-form .forms-input {
     margin-bottom: 20px;
   }
@@ -574,7 +574,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     font-size: 16px;
     outline: none;
   }
-  
+
   .create-role-form .create-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -586,7 +586,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     font-size: 18px;
     transition:  var(--tran-03);
   }
-  
+
   .create-role-form .create-btn:hover {
     background-color: var(--create-hover-button-color);
   }
@@ -617,10 +617,10 @@ td input[type="checkbox"], th input[type="checkbox"] {
 
   .custom-checkbox {
     display: flex;
-   
+
   }
 
-  
+
   .custom-checkbox-input {
     margin: 0 5px 5px 0;
   }
@@ -629,12 +629,12 @@ td input[type="checkbox"], th input[type="checkbox"] {
     margin-left: 50px; /* Indent the permissions */
   }
 
-  
+
   .custom-permissions {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
 
 /* Button Styles */
 #selectAllButton,
@@ -651,7 +651,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
 #selectAllButton:hover,
 #deselectAllButton:hover {
     background-color: var(--primary-color-dark);
-    
+
 }
 .line{
     margin-top: 15px;
@@ -699,13 +699,13 @@ td input[type="checkbox"], th input[type="checkbox"] {
     font-size: 12px;
     display: inline-flex;
     align-items: center;
-   
+
 }
 
 .selected-option .remove-option {
     margin-left: 4px;
     cursor: pointer;
-    
+
 }
 
 /* Hidden Input Field Styles */
@@ -750,7 +750,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     display: flex;
     justify-content: center;
     align-items: center;
-   
+
 }
 
 /* Container for input and button */
@@ -859,7 +859,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     display: flex;
     align-items: center;
     justify-content: space-between; /* This will align items to both ends horizontally */
- 
+
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -900,7 +900,7 @@ td input[type="checkbox"], th input[type="checkbox"] {
     background-color: var(--delete-button-color);
     border:none;
     border-radius: 5px;
-    
+
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
@@ -916,10 +916,43 @@ td input[type="checkbox"], th input[type="checkbox"] {
 #delete-selected-button:hover{
     background-color:var(--delete-hover-button-color);
 }
+/* ------------ Logo edit-------------- */
 
+.logo_edit {
+    background-color: var(--panel-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
 
+.logo_edit label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
 
+.logo_edit input[type="file"] {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    width: calc(100% - 18px); /* Adjusting the width to fit within the container */
+}
 
+.logo_edit button[type="submit"] {
+    background-color:var(--create-button-color);
+    color: var(--panel-color);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
+.logo_edit button[type="submit"]:hover {
+    background-color:  var(--create-hover-button-color);
+}
 
 
