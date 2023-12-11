@@ -9,7 +9,7 @@
             <span class="text">Nav Content</span>
         </div>
         <div class="back">
-            <a href="{{route('admin.permissions.index')}}">
+            <a href="{{route('admin.nav_content.index')}}">
             <button class="back-button"><i class='bx bx-chevron-left'></i>Back</button>
             </a>
         </div>
