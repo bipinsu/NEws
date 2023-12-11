@@ -1,18 +1,25 @@
 @extends('layout.dashboard')
 <link rel="stylesheet" href="/css/admin/admindashboard.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 @section('main')
+
 <div class="content">
     <div class="overview">
         <div class="title">
-            <i class='bx bxs-user'></i>
-            <span class="text">User</span>
+            <i class='bx bx-customize'></i>
+            <span class="text">Nav Content</span>
         </div>
-        @can('create_user')
-            <div class="create">
-                <a href="/admin/users/create">
-                <button class="create-user">Add User</button>
-                </a>
-            </div>
+        @can('create_navcontent')
+        <div class="create">
+
+            <a href="{{route('admin.nav_content.create')}}">
+            <button class="create-permission">Create Nav Content</button>
+            </a>
+        </div>
         @endcan
         <div class="action-bar">
             <div class="left">
@@ -25,41 +32,39 @@
                     <option value="100" {{ $selectedValue == 100 ? 'selected' : '' }}>100</option>
                 </select>
             </div>
-         @can('import_user')
-         <div class="action-button">
-            <a href="{{route('admin.users.import')}}">
+        @can('import_permission')
+        <div class="action-button">
+            <a href="{{route('admin.permissions.import')}}">
 
-            <button class="import-user">Import</button>
+            <button class="import-permission">Import CSV</button>
             </a>
         </div>
         @endcan
-        @can('export_user')
+        @can('export_permission')
 
         <div class="action-button">
 
-            <button class="export-role" id="export-pdf-selected">PDF</button>
+            <button class="export-permission" id="export-pdf-selected">PDF</button>
 
         </div>
 
         <div class="action-button">
 
 
-            <button class="export-role" id="export-selected">CSV</button>
+            <button class="export-permission" id="export-selected">CSV</button>
 
 
         </div>
         @endcan
-        @can('delete_user')
+        @can('delete_permission')
         <div class="action-button">
             <button class="delete-role" id="delete-selected-button"><i class='bx bxs-trash-alt' ></i>Delete Selected</button>
         </div>
         @endcan
-    </div>
-    <div class="right">
-
-
+        </div>
+        <div class="right">
         <div class="search">
-            <form action="{{route('admin.users.search')}}" method="get">
+            <form action="{{route('admin.permissions.search')}}" method="get">
                 <div class="input-container">
                     <input type="text" name="search" id="search" placeholder="Search here .....">
                     <button type="submit"><i class='bx bx-search'></i></button>
@@ -67,91 +72,99 @@
             </form>
         </div>
     </div>
-        </div>
-        <div class="all-user-table">
-            <table>
+    </div>
+
+
+
+
+
+
+        <div class="all-permission-table">
+            <table id="myTable">
                 <thead>
                     <th><input type="checkbox" name="maincheckbox"></th>
                     <th>S.N.</th>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Email</th>
+                    <th>Title</th>
+                    <th>Group Name</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
-                    <tr>
-                        <td><input type="checkbox" name="selectedRow[]"   value="{{$user->id}}"></td>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>
-                            {{-- <div class="role-container">
-                                Admin
-                            </div> --}}
-                            @if($user->roles)
-                            <div class="role-container">
-                                @foreach($user->roles as $user_roles)
-                                    <div class="roles">{{$user_roles->name}}</div>
-                                @endforeach
-                            </div>
-                            @endif
-                        </td>
-                        <td>{{$user->email}}</td>
-                        <td class="all-button">
-                            <div class="button-group">
-                                @can('view_user')
-                                <a href="{{route('admin.users.show',$user->id)}}">
-                                    <button class="view"><i class='bx bx-show-alt' ></i>View </button>
-                                </a>
-                                @endcan
-                                @can('edit_user')
-                                    <a href="{{route('admin.users.edit',$user->id)}}">
+
+                    @foreach ($permissions as $permission)
+                        <tr>
+                            <td> <input type="checkbox" name="selectedRow[]"   value="{{$permission->id}}"></td>
+                            <td>{{$permission->id}}</td>
+                            <td>
+                                {{$permission->name}}
+                            </td>
+                            <td>
+                                {{$permission->group_name}}
+                            </td>
+                            <td class="all-button">
+                                <div class="button-group">
+                                    @can('view_permission')
+                                    <a href="{{route('admin.permissions.show',$permission->id)}}">
+                                        <button class="view"><i class='bx bx-show-alt' ></i>View </button>
+                                    </a>
+                                    @endcan
+                                    @can('edit_permission')
+                                    <a href="{{route('admin.permissions.edit',$permission->id)}}">
                                         <button class="edit"><i class='bx bxs-edit'></i>Edit</button>
                                     </a>
-                                @endcan
-                                @can('delete_user')
-                                    <form action="{{route('admin.users.destroy',$user->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
-
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="delete"><i class='bx bxs-trash-alt' ></i>Delete</button>
-                                    </form>
-                                @endcan
-                            </div>
-                        </td>
-                    </tr>
-
-                @endforeach
-                @if ($users->isEmpty())
-                    <tr>
-                        <td colspan="6">No User Found!</td>
-                    </tr>
-                @endif
+                                    @endcan
+                                    @can('delete_permission')
+                                        <form action="{{route('admin.permissions.destroy',$permission->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="delete"><i class='bx bxs-trash-alt' ></i>Delete</button>
+                                        </form>
+                                    @endcan
 
 
+
+
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    @endforeach
+                    @if ($permissions->isEmpty())
+                        <tr>
+                            <td colspan="5">No Permission Found!</td>
+                        </tr>
+                    @endif
 
 
                 </tbody>
+
+
             </table>
+
             <div class="your-custom-paginate">
 
-                {{ $users->appends(['search' => request('search')])->links('vendor.pagination.custom') }}
+                {{ $permissions->appends(['search' => request('search')])->links('vendor.pagination.custom') }}
             </div>
+
         </div>
     </div>
+
+
 </div>
-<form id="selected-rows-form" action="{{ route('admin.users.exportselectedcsv') }}" method="POST">
+<form id="selected-rows-form" action="{{ route('admin.permissions.exportselectedcsv') }}" method="POST">
     @csrf
     <input type="hidden" name="selectedRows" value="">
 </form>
-<form id="selected-rows-form-pdf" action="{{ route('admin.users.exportpdf') }}" method="POST">
+<form id="selected-rows-form-pdf" action="{{ route('admin.permissions.exportpdf') }}" method="POST">
     @csrf
     <input type="hidden" name="selectedRows" value="">
 </form>
-<form id="delete-selected-form" action="{{route('admin.users.deleteSelected')}}" method="POST">
+<form id="delete-selected-form" action="{{route('admin.permissions.deleteSelected')}}" method="POST">
     @csrf
     <input type="hidden" name="selectedRows" value="">
 </form>
+
 @endsection
 {{-- Pagination --}}
 <script>
@@ -233,7 +246,7 @@
         });
     });
     </script>
-    {{-- Deleted selected--}}
+{{-- Deleted selected--}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Find the export button and the selected rows form

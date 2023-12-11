@@ -103,47 +103,7 @@
                     <a id="activity_log_link">
                         <i class='bx bxs-time'></i>
                         <span class="link-name">Activity Log</span>
-                        <i class='bx bx-chevron-left arrow'></i>
                     </a>
-                    <ul class="sub-menu" id="activity_log_sub_menu">
-                        {{-- Users --}}
-                        <li>
-                            <a href="{{ route('admin.activity_log.index', 'user') }}">
-                                <i class='bx bxs-user'></i>
-                                <span class="link-name">User</span>
-                            </a>
-                        </li>
-                        {{-- Permission --}}
-                        <li>
-                            <a href="{{ route('admin.activity_log.index', 'permission') }}">
-                                <i class='bx bxs-lock-open'></i>
-                                <span class="link-name">Permission</span>
-                            </a>
-                        </li>
-                        {{-- Role --}}
-                        <li>
-                            <a href="{{ route('admin.activity_log.index', 'role') }}">
-                                <i class='bx bxs-briefcase'></i>
-                                <span class="link-name">Role</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li id="setting">
-                    <a id="setting_link">
-                        <i class='bx bxs-cog'></i>
-                        <span class="link-name">Setting</span>
-                        <i class='bx bx-chevron-left arrow'></i>
-                    </a>
-                    <ul class="sub-menu" id="setting_sub_menu">
-                        <li>
-
-                            <a href="{{ route('admin.logos.edit', $logoId) }}">
-                                <i class='bx bxs-image'></i>
-                                <span class="link-name">Update Logo</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
 
