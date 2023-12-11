@@ -11,27 +11,27 @@
     <link rel="stylesheet" href="/css/admin/dashboardlayout.css">
     {{-- JS --}}
     <script defer  src="/js/admin/dashboard.js"></script>
-    
+
 
 </head>
 <body >
- 
+
     <script>
         (function() {
-            const body = document.querySelector("body");         
+            const body = document.querySelector("body");
             let getMode = localStorage.getItem("mode");
             if (getMode && getMode === "dark") {
                 body.classList.add("dark");
             } else {
                 body.classList.remove("dark");
             }
-          
+
         })();
     </script>
-    
-   
 
-   
+
+
+
     <nav>
         {{-- Nav logo --}}
         <div class="logo">
@@ -90,7 +90,6 @@
                         </li>
                     @endcan
                     </ul>
-                 
 
 
                 </li>
@@ -100,8 +99,14 @@
                         <span class="link-name">Activity Log</span>
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-customize'></i>
+                        <span class="link-name">Nav Content</span>
+                    </a>
+                </li>
             </ul>
-            
+
             <ul class="logout-mode">
                 {{-- logout --}}
                 <li>
@@ -127,7 +132,7 @@
         (function() {
             const sidebarToggle = document.querySelector(".sidebar-toggle");
             const sidebar = document.querySelector("nav");
-    
+
             // Apply the sidebar status from localStorage
             let getStatus = localStorage.getItem("status");
             if (getStatus === "close") {
@@ -135,8 +140,8 @@
             } else if (getStatus === "open") {
                 sidebar.classList.remove("close");
             }
-    
-  
+
+
         })();
     </script>
       <script>
@@ -144,7 +149,7 @@
         const userManagementItem = document.getElementById('user_mgmt');
         const subMenu = document.getElementById("user_sub_menu");
         const arrow = userManagementItem.querySelector('.arrow');
-    
+
         userManagementItem.addEventListener("click", () => {
             subMenu.classList.toggle("show");
             arrow.classList.toggle('rotate');
@@ -161,14 +166,14 @@
                 {{-- <img src="{{asset('profile/profile.jpg')}}" alt="no img"> --}}
                 <span class="user-name">Welcome {{auth()->user()->name}}</span>
             </div>
-            
+
         </div>
     </section>
     @include('layout.toastr')
     <main>
         @yield('main')
     </main>
-    
+
 </body>
 
 </html>
