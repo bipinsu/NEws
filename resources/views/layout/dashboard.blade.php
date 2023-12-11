@@ -146,6 +146,12 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-customize'></i>
+                        <span class="link-name">Nav Content</span>
+                    </a>
+                </li>
             </ul>
 
             <ul class="logout-mode">
