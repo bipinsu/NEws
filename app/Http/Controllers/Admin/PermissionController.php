@@ -9,6 +9,7 @@ use App\Imports\PermissionImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 use PDF;
+use DB;
 
 class PermissionController extends Controller
 {

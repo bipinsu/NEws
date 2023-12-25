@@ -29,4 +29,8 @@ class News extends Model
     {
         return $this->belongsTo(NavSubHeading::class, 'nav_sub_headings_id');
     }
+    public function images()
+{
+   return $this->hasMany(NewsImage::class);
+}
 }

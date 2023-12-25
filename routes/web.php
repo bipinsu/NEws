@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\NewsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\NavContent;
 use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -8,7 +10,6 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\User\NavContent;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // Logo route
     Route::resource('logos', LogoController::class);
     Route::resource('nav_contents',NavContent::class);
-    Route::post('/nav_contents/delete-selected', [NavContent::class, 'deleteSelected'])->name('nav_contents.deleteSelected')->middleware('permission:delete_user');
+    Route::resource('news',NewsController::class);
+    Route::post('/news/delete-selected', [UserController::class, 'deleteSelected'])->name('news.deleteSelected')->middleware('permission:delete_user');
+    // Import Export news
+    Route::get('/news/import', [NewsController::class, 'import'])->name('news.import');
+    Route::post('/news/import', [NewsController::class, 'importPermission'])->name('news.import.store');
+    Route::post('/news/exportpdf', [NewsController::class, 'exportpdf'])->name('news.exportpdf');
+    Route::post('/news/exportselectedcsv', [NewsController::class, 'exportselectedcsv'])->name('news.exportselectedcsv');
+    Route::post('/news/{user}/restore', [NewsController::class, 'restore'])->name('news.restore');
+    Route::delete('/news/{user}/force-delete', [NewsController::class, 'forceDelete'])->name('news.force-delete');
+    Route::get('/news/search', [NewsController::class, 'search'])->name('news.search');
+    Route::get('/get-subheadings/{id}', [NewsController::class, 'getSubheadings']);
+    Route::get('/get-news/{id}', [NewsController::class, 'getNews'])->name('admin.get-news');
     // Import Export nav_contents
+    Route::post('/nav_contents/delete-selected', [NavContent::class, 'deleteSelected'])->name('nav_contents.deleteSelected')->middleware('permission:delete_user');
     Route::get('/nav_contents/import', [NavContent::class, 'import'])->name('nav_contents.import')->middleware('permission:import_user');
     Route::post('/nav_contents/import', [NavContent::class, 'importPermission'])->name('nav_contents.import.store')->middleware('permission:import_user');
     Route::post('/nav_contents/exportpdf', [NavContent::class, 'exportpdf'])->name('nav_contents.exportpdf')->middleware('permission:export_user');

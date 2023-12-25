@@ -17,20 +17,20 @@ use PDF;
 class RoleController extends Controller
 {
     public function index(Request $request){
-       
+
         $permissions=Permission::all();
         $selectedValue = $request->query('perPage', session('pagination_role', 10));
-    
+
         $roles = Role::paginate($selectedValue);
-    
+
         if ($request->ajax()) {
             // If it's an AJAX request, return the updated pagination data as a rendered view
             return view('vendor.pagination.custom', ['roles' => $roles])->render();
         }
-    
+
         // Store the selected value in the session
         session(['pagination_role' => $selectedValue]);
-        
+
         return view('admin.role.index',compact('roles','permissions','selectedValue'));
     }
     public function create(){
@@ -39,13 +39,13 @@ class RoleController extends Controller
         return view('admin.role.create',compact('permissions','permission_groups'));
     }
     public function store(Request $request){
-        
+
         $validated=$request->validate(['name'=>['required','min:3','unique:roles']]);
         Role::create($validated);
         $role=Role::where('name',$validated['name'])->first();
         $permissions=$request['permission'];
         $role->syncPermissions($permissions);
-        
+
         return redirect()->route('admin.roles.index')->with('message','Role Created successfully');
     }
     public function edit(Role $role){
@@ -58,8 +58,8 @@ class RoleController extends Controller
         $role->syncPermissions($permissions);
         $validated=$request->validate(['name'=>['required','min:3']]);
         $role->update($validated);
-       
-        
+
+
         return redirect()->route('admin.roles.index')->with('message','Role Updated successfully');
     }
     public function destroy(Role $role){
@@ -67,26 +67,26 @@ class RoleController extends Controller
         return redirect()->route('admin.roles.index')->with('error','Role Deleted successfully');
     }
     public function show(Role $role){
-       
+
         return view('admin.role.show',compact('role'));
-    } 
+    }
     // import csv
     public function import(){
         //    dd('hello');
             return view('admin.role.import');
         }
     public function importRole(Request $request){
-        
+
         Excel::import(new RoleImport, $request->file('import_file'));
         return redirect()->route('admin.roles.index')->with('message','Role Imported successfully');
     }
     //    export pdf
         public function exportpdf(Request $request){
             $selectedRowValues = $request->input('selectedRows');
-            
+
             // Convert the comma-separated string into an array
             $selectedRows = explode(',', $selectedRowValues);
-           
+
             if($selectedRowValues==null){
                 $roles =Role::get();
                 $permissions=Permission::all();
@@ -96,9 +96,9 @@ class RoleController extends Controller
                 'roles' =>$roles,
                 'permissions'=>$permissions,
                ];
-              
+
                $pdf = PDF::loadView('admin.role.export-pdf', $data)->setPaper('A4');
-              
+
                return $pdf->stream('Roles.pdf');
             }
             $roles=Role::whereIn('id',$selectedRows)->get();
@@ -109,25 +109,25 @@ class RoleController extends Controller
                 'roles' =>$roles,
                 'permissions'=>$permissions,
                ];
-              
+
                $pdf = PDF::loadView('admin.role.export-pdf', $data)->setPaper('A4');
-              
+
                return $pdf->stream('Roles.pdf');
-            
+
         //    return $pdf->download('roles.pdf');
-            
-           
+
+
         }
         // export csv
         public function exportselectedcsv(Request $request)
         {
             $selectedRowValues = $request->input('selectedRows');
-            
+
             // Convert the comma-separated string into an array
             $selectedRows = explode(',', $selectedRowValues);
             return (new RoleExport($selectedRows))->download('roles.csv') ;
-          
-        
+
+
         }
         public function search(Request $request){
             $search=$request->input('search');
@@ -135,19 +135,19 @@ class RoleController extends Controller
             $roles = Role::select()
                             ->where('name', 'LIKE', "%{$search}%")
                             ->paginate($selectedValue);
-            
 
-          
-        
+
+
+
             if ($request->ajax()) {
                 // If it's an AJAX request, return the updated pagination data as a rendered view
                 return view('vendor.pagination.custom', ['roles' => $roles])->render();
             }
-        
+
             // Store the selected value in the session
             session(['pagination_role' => $selectedValue]);
             return view ('admin.role.index',compact('roles','selectedValue'));
-    
+
         }
         public function deleteSelected(Request $request)
         {
@@ -155,7 +155,7 @@ class RoleController extends Controller
             $selectedRows = explode(',', $selectedRoles);
             foreach ($selectedRows as $roleId) {
                 $role = Role::find($roleId);
-                
+
                 if ($role) {
                     // dd($role);
                     $role->delete(); // Delete the role

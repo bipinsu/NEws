@@ -150,10 +150,13 @@
                     <a href="{{ route('admin.nav_contents.index') }}">
                         <i class='bx bx-customize'></i>
                         <span class="link-name">Nav Content</span>
-                        <i class='bx bx-chevron-left arrow'></i>
-
                     </a>
-
+                </li>
+                <li id="nav_content">
+                    <a href="{{ route('admin.news.index') }}">
+                        <i class='bx bx-customize'></i>
+                        <span class="link-name">News</span>
+                    </a>
                 </li>
             </ul>
 
