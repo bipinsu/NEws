@@ -1,6 +1,8 @@
 @extends('layout.dashboard')
 <link rel="stylesheet" href="/css/admin/admindashboard.css">
+<link rel="stylesheet" href="/css/admin/popupnews.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -199,10 +201,21 @@
                 <strong>Description</strong>
             </label>
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
-            <label for="image">
+            {{-- <label for="image">
                 <strong>Image</strong>
-            </label>
-            <input type="file" name="images[]" multiple>
+            </label> --}}
+            {{-- <input type="file" name="images[]" multiple> --}}
+            <div class="upload__box">
+                <div class="upload__btn-box">
+                    <label class="upload__btn">
+                        <p>Upload images</p>
+                        <input type="file" multiple="" name="images[]" id="file_images" data-max_length="20"
+                            class="upload__inputfile">
+                    </label>
+                </div>
+                <div class="upload__img-wrap"></div>
+            </div>
+
 
 
             <button type="submit" class="btn">Submit</button>
@@ -247,11 +260,17 @@
             </label>
             <textarea name="description" id="descriptionEdit" cols="30" rows="10"></textarea>
 
-            <label for="image">
-                <strong>Image</strong>
-            </label>
-            <input type="file" name="images[]" id="imageEdit" multiple>
-            <div id="imageEditPreview"></div>
+            <div class="upload__box">
+                <div class="upload__btn-box">
+                    <label class="upload__btn">
+                        <p>Upload images</p>
+                        <input type="file" multiple="" name="images[]" id="file_images_edit" data-max_length="20"
+                            class="upload__inputfile">
+                    </label>
+                </div>
+                <div class="upload__img-wrap_edit"></div>
+            </div>
+            <div class="previous_imgs"></div>
 
             <button type="submit" class="btn">Update</button>
         </form>
@@ -429,53 +448,7 @@
         $('#overlayView').hide();
     }
 </script>
-{{-- Edit --}}
 
-<script>
-    function showEditPopup(newsId) {
-   // Use AJAX to fetch the news data from the server
-   $.ajax({
-       url: '/admin/get-news/' + newsId, // Replace with your actual route
-       type: 'GET',
-       success: function(response) {
-        //    console.log(response);
-
-           // Set the selected option based on the nav_heading_id value
-           $('#nav_heading_idEdit').val(response.nav_headings_id);
-           $('#nav_sub_heading_idEdit').val(response.nav_sub_headings_id);
-
-           // Set other form values
-           $('#nameEdit').val(response.title);
-           $('#descriptionEdit').val(response.description);
-
-           // Display the images
-           if (response.images) {
-            console.log(response.images);
-               var imgContainer = $('#imageEditPreview');
-               imgContainer.empty();
-               response.images.forEach(function(image) {
-                  var img = $('<img>').attr('src', "{{ asset('storage/') }}/" + image.image_path).attr('alt', 'Image');
-                  imgContainer.append(img);
-               });
-           }
-
-           // Show the modal
-           $('#popupEdit').show();
-           $('#overlayEdit').show();
-       },
-       error: function(error) {
-           console.error('Error fetching news data:', error);
-       }
-   });
-}
-
-    function closeEditPopup() {
-        // Close the modal and reset form values
-        $('#popupEdit').hide();
-        $('#overlayEdit').hide();
-        $('#newsForm')[0].reset();
-    }
-</script>
 
 
 {{-- Sub heading --}}
@@ -504,4 +477,200 @@
             });
         });
     });
+</script>
+{{-- image --}}
+
+<script>
+    jQuery(document).ready(function() {
+        ImgUpload();
+    });
+
+    function ImgUpload() {
+        var imgWrap = "";
+        var imgArray = [];
+        var iterator = 0;
+
+        $('.upload__inputfile').each(function() {
+            $(this).on('change', function(e) {
+                imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+                var maxLength = $(this).attr('data-max_length');
+
+                var files = e.target.files;
+                var filesArr = Array.prototype.slice.call(files);
+                filesArr.forEach(function(f, index) {
+
+                    if (!f.type.match('image.*')) {
+                        return;
+                    }
+
+                    if (imgArray.length >= maxLength) {
+                        return false;
+                    } else {
+                        imgArray.push(f);
+
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            var html =
+                                "<div class='upload__img-box'><div style='background-image: url(" +
+                                e.target.result + ")' data-number='" + iterator +
+                                "' data-file='" + f
+                                .name +
+                                "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                            imgWrap.append(html);
+                            iterator++;
+                        }
+                        reader.readAsDataURL(f);
+                    }
+                });
+            });
+        });
+
+        $('body').on('click', ".upload__img-close", function(e) {
+            var file = $(this).parent().data("file");
+            for (var i = 0; i < imgArray.length; i++) {
+                if (imgArray[i].name === file) {
+                    imgArray.splice(i, 1); // Remove the image from the array
+                    break;
+                }
+            }
+            $(this).parent().parent().remove(); // Remove the image from the DOM
+        });
+        $('#newsForm').on('submit', function(e) {
+            //  e.preventDefault(); // Prevent the default form submission
+
+            const file_images = document.getElementById('file_images');
+            var fileList = new DataTransfer();
+
+            // Add all files from imgArray to the FileList object
+            imgArray.forEach(function(file) {
+                fileList.items.add(file);
+            });
+
+            // Set the 'files' property of the file input element to the FileList object
+            file_images.files = fileList.files;
+        });
+
+
+
+    }
+</script>
+{{-- edit --}}
+
+
+<script>
+    function showEditPopup(newsId) {
+      // Use AJAX to fetch the news data from the server
+      $.ajax({
+          url: '/admin/get-news/' + newsId, // Replace with your actual route
+          type: 'GET',
+          success: function(response) {
+              // Set the selected option based on the nav_heading_id value
+              $('#nav_heading_idEdit').val(response.nav_headings_id);
+              $('#nav_sub_heading_idEdit').val(response.nav_sub_headings_id);
+
+              // Set other form values
+              $('#nameEdit').val(response.title);
+              $('#descriptionEdit').val(response.description);
+
+              if (response.images) {
+                console.log(response.images);
+                var imgContainer = $('.previous_imgs');
+                imgContainer.empty();
+                response.images.forEach(function(image) {
+                var img = $('<img>').attr('src', "/storage/" + image.image_path).attr('alt', 'Image');
+                imgContainer.append(img);
+                });
+            }
+
+              // Show the modal
+              $('#popupEdit').show();
+              $('#overlayEdit').show();
+          },
+          error: function(error) {
+              console.error('Error fetching news data:', error);
+          }
+      });
+    }
+
+        function closeEditPopup() {
+            // Close the modal and reset form values
+            $('#popupEdit').hide();
+            $('#overlayEdit').hide();
+            $('#newsForm')[0].reset();
+        }
+    </script>
+<script>
+jQuery(document).ready(function() {
+ ImgUploadEdit();
+});
+
+function ImgUploadEdit() {
+ var imgWrap = "";
+ var imgArray = [];
+ var iterator = 0;
+
+ $('#file_images_edit').each(function() {
+     $(this).on('change', function(e) {
+         imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap_edit');
+         var maxLength = $(this).attr('data-max_length');
+
+         var files = e.target.files;
+         var filesArr = Array.prototype.slice.call(files);
+         filesArr.forEach(function(f, index) {
+
+             if (!f.type.match('image.*')) {
+               return;
+             }
+
+             if (imgArray.length >= maxLength) {
+               return false;
+             } else {
+               imgArray.push(f);
+
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                 var html =
+                     "<div class='upload__img-box'><div style='background-image: url(" +
+                     e.target.result + ")' data-number='" + iterator + "' data-file='" + f
+                     .name +
+                     "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                 imgWrap.append(html);
+                 iterator++;
+               }
+               reader.readAsDataURL(f);
+             }
+         });
+     });
+ });
+
+ $('body').on('click', ".upload__img-close", function(e) {
+     var file = $(this).parent().data("file");
+     for (var i = 0; i < imgArray.length; i++) {
+         if (imgArray[i].name === file) {
+             imgArray.splice(i, 1); // Remove the image from the array
+             break;
+         }
+     }
+     $(this).parent().parent().remove(); // Remove the image from the DOM
+ });
+
+ $('#newsForm').on('submit', function(e) {
+   e.preventDefault(); // Prevent the default form submission
+
+   const file_images = document.getElementById('file_images_edit');
+   var fileList = new DataTransfer();
+
+   // Add all files from imgArray to the FileList object
+   imgArray.forEach(function(file) {
+     fileList.items.add(file);
+   });
+
+   // Set the 'files' property of the file input element to the FileList object
+   file_images.files = fileList.files;
+
+   // Now you can submit the form
+   this.submit();
+ });
+}
 </script>

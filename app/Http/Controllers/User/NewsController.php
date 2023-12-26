@@ -43,6 +43,7 @@ class NewsController extends Controller
     // Store a newly created news in the database.
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'nav_headings_id' => 'required|exists:nav_headings,id',
             'nav_sub_headings_id' => 'required|exists:nav_sub_headings,id',
